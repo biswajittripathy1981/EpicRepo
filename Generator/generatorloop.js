@@ -1,17 +1,30 @@
+// function* generator() { 
+//     for(let i=1;i<9;i++)
+//     {
+//       console.log('before yield');
+//       yield i;
+//       console.log('inside loop');
+//     }
+//     console.log('outside loop');
+// }
 function* generator() { 
-    for(let i=1;i<9;i++)
-    {
-      console.log('before yield');
-      yield i;
-      console.log('inside loop');
-    }
-    console.log('outside loop');
+  yield 1;
+  yield 2;
+  return 3;
 }
 const gen = generator();
 
-for(let i=1;i<9;i++)
+// for(let i=1;i<gen.length;i++)
+// {
+//     console.log(gen.next());
+// }
+while(!gen.next().done)
 {
-    console.log(gen.next());
+  console.log(gen.next());
+}
+for(let item of gen)
+{
+  console.log(item);
 }
 // before yield
 // { value: 1, done: false }
